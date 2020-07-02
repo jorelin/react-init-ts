@@ -2,13 +2,12 @@
  * @Author: shiyuanyuan
  * @Date: 2020-06-29 16:39:12
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-01 18:54:06
+ * @LastEditTime: 2020-07-02 15:00:17
  * @Description: 
  */ 
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
-import * as api from '../../api/modules/app';
 import { DatePicker } from 'antd';
 import { concat } from 'lodash';
 // 定义ts接口，props数据类型检测
@@ -30,10 +29,10 @@ const Home = (props: HomeData) => {
   const arr = concat(1, 2)
   // redux - counter - ADD/MINUS
   const changeNum = async (action: string) => {
-    await api.apiGetCrm();
-    dispatch({
-      type: action
-    })
+    // redux-saga 
+    dispatch({ type: 'GET_LIST' })
+    // redux
+    dispatch({ type: action })
   }
   
   // redux - app - SAY_HI

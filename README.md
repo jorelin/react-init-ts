@@ -24,7 +24,6 @@
 ✅ 状态管理redux、react-redux
 
     src/redux/state/* - 设置state、reduce方法(根据dispatch传入的payload更改state数据)
-    src/redux/constant.js - 设置action的名称，用于dispatch方法触发
     src/redux/index.js - state文件夹下定义的state模块都需要在这里注册
 
 ✅ 异步请求axio
@@ -37,7 +36,7 @@
 
 ✅ seamless-immutable - immutable data(不可变数据)
 
-  [seamless-immutable使用方法](https://www.npmjs.com/package/seamless-immutable)
+  [seamless-immutable-doc](https://www.npmjs.com/package/seamless-immutable)
 
     immutable data就是一旦创建，就不能再被更改的数据。对immutable对象的任何修改或添加删除操作都会返回一个新的immutable对象。
     使用旧数据创建新数据时，要保证旧数据同事可用且不变。
@@ -47,7 +46,13 @@
 
     依个人习惯，有需要可自行安装lodash、underscore、Ramda或其他函数式编程的库。函数式编程非常好用，强烈推荐。
 
-  [lodash](https://www.lodashjs.com/)
+  [lodash-doc](https://www.lodashjs.com/)
+
+✅ redux-saga
+
+    redux中的action仅支持原始对象，即同步操作，而处理有副作用的则需要中间件，中间件可以在发出action，到reducer函数接受action之间，执行有副作用的操作，处理异步的中间件有redux-thunk(已添加，但是操作不如saga，不利于维护，推荐使用saga) 和 redux-saga。
+
+  [redux-sage-doc](https://redux-saga-in-chinese.js.org/docs/api/index.html)
 
 
 ### `npm install` - 安装依赖
@@ -56,7 +61,7 @@
 
 1、由于使用了sass-loader，所以很大可能是由于node-sass未安装成功，出现node-sass错误需要单独安装node-sass和sass
 2、开发过程中，安装了新的依赖，ts类型检测大部分情况会提示找不到module，
-   解决方法： 需要安装@types/[依赖名]，在[npm官网](https://www.npmjs.com/)查找次ts类型声明依赖，99%的npm依赖都已支持ts。
+   解决方法： 需要安装@types/[依赖名]，在[npm官网](https://www.npmjs.com/)查找ts类型声明依赖，99%的npm依赖都已支持ts。
 
 ### `npm start` - 启动
 
@@ -89,6 +94,7 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 App.test.tsx文件是一个简单的例子，测试a链接是否正常可以打开链接，
 有兴趣的可以看一下前端单元测试，开发中还是很有用的，尤其是表单自动化测试。
+官方使用的测试框架是Jest，具体使用方法请查阅查看官方文档
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

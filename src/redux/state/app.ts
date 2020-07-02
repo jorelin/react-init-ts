@@ -2,11 +2,10 @@
  * @Author: shiyuanyuan
  * @Date: 2020-07-01 17:10:24
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-01 18:17:01
+ * @LastEditTime: 2020-07-02 14:16:58
  * @Description: 
  */ 
 import createReducer from '../../utils/createReduce.js';
-import { SAY_HI } from '../constant'
 import immutable from 'seamless-immutable';
 interface actionType<U, T> {
   type: U,
@@ -20,7 +19,7 @@ const initState: stateData = {
 }
 const INITIAL_STATE = immutable(initState)
 export default createReducer(INITIAL_STATE, {
-  [SAY_HI]: (state = INITIAL_STATE, action: actionType<string, string> ) => {
+  'SAY_HI': (state = INITIAL_STATE, action: actionType<string, string> ) => {
     const { payload } = action;
     return state.set('name', payload)
   }
