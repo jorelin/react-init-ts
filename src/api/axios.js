@@ -2,14 +2,14 @@
  * @Author: shiyuanyuan
  * @Date: 2020-07-01 11:24:51
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-01 13:44:48
+ * @LastEditTime: 2020-07-03 20:10:47
  * @Description: 
  */ 
 
 import axios from 'axios';
 import { message } from 'antd';
-
-const token = '';
+import { getCookie } from '../utils/commonFn'
+const token = getCookie('token');
 
 axios.defaults.headers.common['Authorization'] = token;
 axios.defaults.headers.common['Content-Type'] = 'application/json'

@@ -2,18 +2,20 @@
  * @Author: shiyuanyuan
  * @Date: 2020-06-29 16:44:35
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-06-29 19:31:42
+ * @LastEditTime: 2020-07-03 21:03:59
  * @Description: 
  */
 import Loadable from 'react-loadable';
 import Loading from '../component/Loading'
+
 const config = [
   { 
+    name: 'login',
     path: "/", 
     exact: true, 
     auth: 'normal',
     component: Loadable({
-      loader: () => import("../views/Home"),
+      loader: () => import("../views/Login"),
       loading: Loading
     })
   },
@@ -27,32 +29,33 @@ const config = [
     }),
     routes: [
       {
-        path: "/home/child",
+        path: "/home",
+        exact: true, 
         component: Loadable({
           loader: () => import("../views/Home/GrandChild"),
+          loading: Loading
+        }),
+      },
+      {
+        path: "/home/about",
+        exact: true, 
+        component: Loadable({
+          loader: () => import("../views/About"),
+          loading: Loading
+        }),
+      },
+      {
+        name: 'dashboard',
+        path: '/home/dashboard',
+        auth: 'admin',
+        component: Loadable({
+          loader: () => import("../views/Dashboard"),
           loading: Loading
         }),
       }
     ]
   },
-  {
-    name: 'about',
-    auth: 'normal',
-    path: '/about',
-    component: Loadable({
-      loader: () => import("../views/About"),
-      loading: Loading
-    }),
-  },
-  {
-    name: 'dashboard',
-    path: '/dashboard',
-    auth: 'admin',
-    component: Loadable({
-      loader: () => import("../views/Dashboard"),
-      loading: Loading
-    }),
-  }
+  // TODO 404、403page
 ]
 
 export default config;

@@ -1,10 +1,8 @@
 import React from 'react';
-
+import { Skeleton } from 'antd';
 function Loading() {
   return (
-    <div>
-      <h2>Loading</h2>
-    </div>
+    <Skeleton />
   );
 }
 
