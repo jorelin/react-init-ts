@@ -2,18 +2,20 @@
  * @Author: shiyuanyuan
  * @Date: 2020-07-02 14:21:47
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-03 19:57:27
+ * @LastEditTime: 2020-07-06 15:54:25
  * @Description: 
  */
 
 import {
   call,
   put, 
+  select,
   // takeEvery, 
   takeLatest,
 } from 'redux-saga/effects'
 import * as api from '../api/modules/app';
-import { setCookie } from '../utils/commonFn'
+import { setCookie } from '../utils/commonFn';
+import { countStateType } from '../types/count';
 
 function* login(action: any) {
   try{
@@ -28,8 +30,8 @@ function* login(action: any) {
 function* fetchCrmList(action:any) {
   try {
     const data = yield call(api.apiGetCrm);
-    console.log(data)
-    yield put({ type: 'SAY_HI', payload: 90000 })
+    const countData: countStateType= yield select(state => state.counter);
+    yield put({ type: 'SAY_HI', payload: countData.num})
     
   } catch (e) { }
 }

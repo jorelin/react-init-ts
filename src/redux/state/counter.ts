@@ -2,15 +2,14 @@
  * @Author: shiyuanyuan
  * @Date: 2020-06-29 20:21:57
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-03 13:41:00
+ * @LastEditTime: 2020-07-06 15:59:03
  * @Description: 
  */ 
 import createReducer from '../../utils/createReduce.js';
 import immutable from 'seamless-immutable';
-interface stateData {
-  num: number,
-}
-const initState: stateData = {
+import { countStateType } from '../../types/count';
+// import { actionType } from '../../types/commonType'; 
+const initState: countStateType = {
   num: 0
 }
 const INITIAL_STATE = immutable(initState)

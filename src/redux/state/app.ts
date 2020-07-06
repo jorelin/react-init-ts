@@ -2,22 +2,20 @@
  * @Author: shiyuanyuan
  * @Date: 2020-07-01 17:10:24
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-03 16:53:33
+ * @LastEditTime: 2020-07-06 15:52:15
  * @Description: 
  */
 import createReducer from '../../utils/createReduce.js';
 import immutable from 'seamless-immutable';
-interface stateData {
-  name: string,
-  token: string,
-}
-const initState: stateData = {
+import { appStateType } from '../../types/app';
+import { actionType } from '../../types/commonType'; 
+const initState: appStateType = {
   name: 'hi',
   token: '',
 }
 const INITIAL_STATE = immutable(initState)
 
 export default createReducer(INITIAL_STATE, {
-  'SAY_HI': (state = INITIAL_STATE, action: any) => state.set('name', action.payload),
-  'SET_TOKEN': (state = INITIAL_STATE, action: any) => state.set('token', action.payload)
+  'SAY_HI': (state = INITIAL_STATE, action: actionType<string, string>) => state.set('name', action.payload),
+  'SET_TOKEN': (state = INITIAL_STATE, action: actionType<string, string>) => state.set('token', action.payload)
 })

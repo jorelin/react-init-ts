@@ -2,22 +2,19 @@
  * @Author: shiyuanyuan
  * @Date: 2020-07-01 11:24:51
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-03 20:10:47
+ * @LastEditTime: 2020-07-06 17:01:49
  * @Description: 
  */ 
 
 import axios from 'axios';
 import { message } from 'antd';
-import { getCookie } from '../utils/commonFn'
-const token = getCookie('token');
-
-axios.defaults.headers.common['Authorization'] = token;
-axios.defaults.headers.common['Content-Type'] = 'application/json'
+import { getCookie } from '../utils/commonFn';
 axios.defaults.timeout = 30000
-
 const instance = axios.create();
-
 instance.interceptors.request.use(config => {
+  config.headers = {
+    "Authorization": getCookie('token')
+  }
   return config
 }, error => {
   return Promise.reject(error);
@@ -34,9 +31,11 @@ instance.interceptors.response.use(response => {
       break;
     case '401':
       message.error('认证信息未通过，请重新登录');
+      window.location.hash = '#/'
       break;
     case '406': {
       message.warning(response.data.message);
+      window.location.hash = '#/'
       break
     }
     default:

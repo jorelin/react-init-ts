@@ -2,7 +2,7 @@
  * @Author: shiyuanyuan
  * @Date: 2020-06-29 16:39:12
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-03 21:23:20
+ * @LastEditTime: 2020-07-06 16:30:32
  * @Description: 
  */
 import React, { useState, useEffect} from 'react';
@@ -40,9 +40,10 @@ const Home = (props: HomeData) => {
     getPath();
   },[])
   const getPath = () => {
-    const currentPagePath = window.location.hash.split('#')[1];
+    const hash = window.location.hash.split('#')
+    const currentPagePath = hash[1];
     const matchPath = props.route.routes.some((v: any) => v.path === currentPagePath)
-    if (!matchPath){
+    if (!matchPath && currentPagePath.split('/')[1] === 'home'){
       props.history.push('/home')
     }else{
       setPagePath(currentPagePath)
@@ -50,9 +51,9 @@ const Home = (props: HomeData) => {
   }
   return (
     <Layout>
-      <Sider breakpoint="lg" collapsedWidth="0" style={{ height: '100vh' }}>
+      <Sider breakpoint="lg" collapsedWidth="0" style={{ height: '100vh' }} theme="light" >
         <div className="logo" style={{ height: '64px' }}></div>
-        <Menu theme="dark" mode="inline" selectedKeys={[pagePath]}>
+        <Menu theme="light" mode="inline" selectedKeys={[pagePath]}>
           <Menu.Item key="/home" icon={<UserOutlined />}>
             <Link to={`/home`}>init</Link>
           </Menu.Item>
@@ -61,11 +62,14 @@ const Home = (props: HomeData) => {
           </Menu.Item>
           <Menu.Item key="/home/dashboard" icon={<VideoCameraOutlined />}>
             <Link to={`/home/dashboard`}>dashboard</Link>
-        </Menu.Item>
+          </Menu.Item>
+          <Menu.Item key="/home/auth" icon={<VideoCameraOutlined />}>
+            <Link to={`/403`}>auth</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
-        <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
+        <Header className="site-layout-background" style={{ padding: 0, background: '#fff' }}/>
         <Content style={{ margin: '24px 16px 0' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             {renderRoutes(props.route.routes)}
