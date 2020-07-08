@@ -17,10 +17,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      // "@/views/*": [
+      //   "src/views/*"
+      // ],
+    }
   },
   "include": [
     "src",
     "src/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
   ]
 }

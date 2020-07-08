@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 import { Store } from 'antd/lib/form/interface';
-import { getCookie } from '../../utils/commonFn';
+import { getCookie } from 'src/utils/commonFn';
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 8 },

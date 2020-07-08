@@ -5,10 +5,10 @@
  * @LastEditTime: 2020-07-06 15:59:03
  * @Description: 
  */ 
-import createReducer from '../../utils/createReduce.js';
+import createReducer from 'src/utils/createReduce.js';
 import immutable from 'seamless-immutable';
-import { countStateType } from '../../types/count';
-// import { actionType } from '../../types/commonType'; 
+import { countStateType } from 'src/types/count';
+// import { actionType } from 'src/types/commonType'; 
 const initState: countStateType = {
   num: 0
 }

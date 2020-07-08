@@ -2,7 +2,7 @@
  * @Author: shiyuanyuan
  * @Date: 2020-06-29 16:39:12
  * @LastEditors: shiyuanyuan
- * @LastEditTime: 2020-07-06 16:30:32
+ * @LastEditTime: 2020-07-08 17:28:20
  * @Description: 
  */
 import React, { useState, useEffect} from 'react';
@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { Layout, Menu } from 'antd';
 
 import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-
+import GrandChild from 'src/views/Home/GrandChild';
 const { Header, Content, Footer, Sider } = Layout;
 // 定义ts接口，props数据类型检测
 interface actionType<U, T> {
@@ -72,6 +72,7 @@ const Home = (props: HomeData) => {
         <Header className="site-layout-background" style={{ padding: 0, background: '#fff' }}/>
         <Content style={{ margin: '24px 16px 0' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            <GrandChild/>
             {renderRoutes(props.route.routes)}
           </div>
         </Content>

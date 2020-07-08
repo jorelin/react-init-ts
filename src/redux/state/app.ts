@@ -5,10 +5,10 @@
  * @LastEditTime: 2020-07-06 15:52:15
  * @Description: 
  */
-import createReducer from '../../utils/createReduce.js';
+import createReducer from 'src/utils/createReduce.js';
 import immutable from 'seamless-immutable';
-import { appStateType } from '../../types/app';
-import { actionType } from '../../types/commonType'; 
+import { appStateType } from 'src/types/app';
+import { actionType } from 'src/types/commonType'; 
 const initState: appStateType = {
   name: 'hi',
   token: '',
